@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-const HERO_IMAGE = '/images/hero-abstract.png';
+const HERO_IMAGE = '/images/home-background.png';
 
 export default function HeroSection() {
   return (
@@ -12,10 +12,10 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
-          alt="Abstract textured art"
-          className="w-full h-full object-cover"
+          alt="Абстрактна текстурна картина с бежови, кафяви и златни акценти"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/45 to-foreground/10" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -70,7 +70,7 @@ export default function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="rounded-full px-8 font-body text-sm tracking-wide border-background/30 text-background hover:bg-background/10 hover:text-background"
+              className="rounded-full px-8 font-body text-sm tracking-wide border-background/70 bg-transparent text-background shadow-sm hover:bg-background/10 hover:text-background"
             >
               <Link to="/custom-order">Поръчай персонализирана</Link>
             </Button>
