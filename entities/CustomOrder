@@ -1,0 +1,62 @@
+{
+  "name": "CustomOrder",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Customer name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Customer email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Customer phone"
+    },
+    "preferred_colors": {
+      "type": "string",
+      "description": "Desired color palette"
+    },
+    "preferred_size": {
+      "type": "string",
+      "description": "Desired dimensions"
+    },
+    "style_description": {
+      "type": "string",
+      "description": "Description of desired style"
+    },
+    "budget": {
+      "type": "string",
+      "description": "Budget range"
+    },
+    "reference_images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Reference image URLs"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "in_discussion",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "new"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "preferred_colors",
+    "style_description"
+  ]
+}
