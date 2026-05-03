@@ -1,0 +1,67 @@
+{
+  "name": "Painting",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Name of the painting"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the painting"
+    },
+    "price": {
+      "type": "number",
+      "description": "Price in BGN"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Main image URL"
+    },
+    "additional_images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Additional image URLs"
+    },
+    "dimensions": {
+      "type": "string",
+      "description": "Size e.g. 60x80 cm"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "abstract",
+        "minimalist",
+        "nature",
+        "geometric",
+        "mixed_media"
+      ],
+      "description": "Category of the painting"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "sold",
+        "reserved"
+      ],
+      "default": "available"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show on homepage"
+    },
+    "materials": {
+      "type": "string",
+      "description": "Materials used e.g. acrylic, plaster, gold leaf"
+    }
+  },
+  "required": [
+    "title",
+    "price",
+    "image_url"
+  ]
+}
