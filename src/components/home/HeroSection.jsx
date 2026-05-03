@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
 const HERO_IMAGE = '/images/home-background.png';
+const HERO_VIDEO_MP4 = '/videos/hero.mp4';
+const HERO_VIDEO_WEBM = '/videos/hero.webm';
 
 export default function HeroSection() {
   return (
@@ -13,8 +15,21 @@ export default function HeroSection() {
         <img
           src={HERO_IMAGE}
           alt="Абстрактна текстурна картина с бежови, кафяви и златни акценти"
-          className="w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center hero-kenburns"
         />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={HERO_IMAGE}
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        >
+          <source src={HERO_VIDEO_WEBM} type="video/webm" />
+          <source src={HERO_VIDEO_MP4} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/75 via-foreground/45 to-foreground/10" />
       </div>
 
