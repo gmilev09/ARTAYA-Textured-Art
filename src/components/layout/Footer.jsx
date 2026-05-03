@@ -8,14 +8,21 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <div className="flex flex-col items-start mb-4">
-              <span className="text-2xl md:text-3xl font-heading font-semibold tracking-widest text-background leading-tight">
-                ARTAYA
-              </span>
-              <div className="w-full h-px bg-primary my-0.5" />
-              <span className="text-[9px] font-body text-background/80 tracking-[0.35em] uppercase">
-                TEXTURED ART
-              </span>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo.jpeg"
+                alt="ARTAYA logo"
+                className="h-12 w-12 object-contain"
+              />
+              <div className="flex flex-col items-start">
+                <span className="text-2xl md:text-3xl font-heading font-semibold tracking-widest text-background leading-tight">
+                  ARTAYA
+                </span>
+                <div className="w-full h-px bg-primary my-0.5" />
+                <span className="text-[9px] font-body text-background/80 tracking-[0.35em] uppercase">
+                  TEXTURED ART
+                </span>
+              </div>
             </div>
             <p className="text-sm font-body leading-relaxed text-background/60">
               Уникални текстурни картини, създадени с внимание към детайла и страст към изкуството. Всяка творба е ръчно изработена.
