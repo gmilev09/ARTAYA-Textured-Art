@@ -10,11 +10,11 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/logo.jpeg"
+                src="/logo.png"
                 alt="ARTAYA logo"
                 className="h-12 w-12 object-contain"
               />
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center">
                 <span className="text-2xl md:text-3xl font-heading font-semibold tracking-widest text-background leading-tight">
                   ARTAYA
                 </span>

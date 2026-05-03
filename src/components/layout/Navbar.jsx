@@ -34,7 +34,7 @@ export default function Navbar({ cartCount = 0 }) {
         <div className="flex items-center justify-between h-20">
           <a href="/" onClick={handleLogoClick} className="flex items-center gap-2">
             <img
-              src="/logo.jpeg"
+              src="/logo.png"
               alt="ARTAYA logo"
               className="h-12 w-12 object-contain"
             />
