@@ -1,0 +1,67 @@
+const paintings = [
+  {
+    id: 'vulna-01',
+    title: 'Вълна',
+    description:
+      'Текстурна абстрактна картина, вдъхновена от силата на морската стихия. Дебели слоеве бяла пастьозна боя оформят гребена на вълната, контрастиращ с дълбокия черен фон, осеян с пръски, които наподобяват пяна и звезди едновременно.',
+    price: 380,
+    image_url: '/images/paintings/wave-1.jpg',
+    additional_images: [
+      '/images/paintings/wave-2.jpg',
+      '/images/paintings/wave-3.jpg',
+    ],
+    dimensions: '50x70 cm',
+    category: 'abstract',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста върху платно',
+  },
+  {
+    id: 'otrazhenie-01',
+    title: 'Отражение',
+    description:
+      'Абстрактна текстурна композиция в топли пясъчни, бронзови и медни тонове, пресечена от тъмна стоманеносиня линия и златни акценти. Огледалната структура около централния хоризонт извиква усещане за безкраен бряг и тиха вода в часа на залеза.',
+    price: 420,
+    image_url: '/images/paintings/reflection-1.jpg',
+    additional_images: [
+      '/images/paintings/reflection-2.jpg',
+      '/images/paintings/reflection-3.jpg',
+    ],
+    dimensions: '60x80 cm',
+    category: 'abstract',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и метални пигменти върху платно',
+  },
+];
+
+const json = (body, init = {}) =>
+  new Response(JSON.stringify(body), {
+    ...init,
+    headers: { 'content-type': 'application/json', ...(init.headers || {}) },
+  });
+
+export default async (req) => {
+  const url = new URL(req.url);
+  const segments = url.pathname.split('/').filter(Boolean);
+  const idx = segments.findIndex((s) => s === 'paintings');
+  const id = idx >= 0 ? segments[idx + 1] : undefined;
+
+  if (id) {
+    const painting = paintings.find((p) => p.id === id);
+    if (!painting) return json({ error: 'Not found' }, { status: 404 });
+    return json(painting);
+  }
+
+  let result = paintings;
+  if (url.searchParams.get('featured') === 'true') {
+    result = result.filter((p) => p.featured);
+  }
+  const limit = url.searchParams.get('limit');
+  if (limit) result = result.slice(0, Number.parseInt(limit, 10) || result.length);
+  return json(result);
+};
+
+export const config = {
+  path: ['/api/paintings', '/api/paintings/:id'],
+};
