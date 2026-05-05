@@ -33,6 +33,40 @@ const paintings = [
     featured: true,
     materials: 'акрил, текстурна паста и метални пигменти върху платно',
   },
+  {
+    id: 'srebarna-gradina-01',
+    title: 'Сребърна градина',
+    description:
+      'Релефна текстурна композиция в чисто бяло, осеяна с деликатни листа и цветове, върху които танцуват сребърни фолийни акценти. Минималистичен, поетичен фрагмент от градина, замръзнала в инеена тишина — светлината улавя всеки релеф и превръща картината в жива повърхност, която се променя според ъгъла на гледане.',
+    price: 320,
+    image_url: '/images/paintings/silver-garden-1.jpg',
+    additional_images: [
+      '/images/paintings/silver-garden-2.jpg',
+      '/images/paintings/silver-garden-3.jpg',
+    ],
+    dimensions: '40x40 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и сребърно фолио върху платно',
+  },
+  {
+    id: 'zlatna-reka-01',
+    title: 'Златна река',
+    description:
+      'Релефна абстрактна композиция, в която потоци от златно фолио се разливат като реки през снежнобяла текстурна повърхност, докоснати тук-там от меки розови сенки. Движението на пастата създава усещане за течаща светлина, а металните акценти се променят с всеки лъч и ъгъл на гледане, превръщайки картината в спокоен, но жив пейзаж от светлина.',
+    price: 400,
+    image_url: '/images/paintings/golden-river-1.jpg',
+    additional_images: [
+      '/images/paintings/golden-river-2.jpg',
+      '/images/paintings/golden-river-3.jpg',
+    ],
+    dimensions: '50x70 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
 ];
 
 const json = (body, init = {}) =>
