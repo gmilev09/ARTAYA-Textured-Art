@@ -1,5 +1,44 @@
 const paintings = [
   {
+    id: 'rozov-vihar-01',
+    title: 'Розов вихър',
+    description:
+      'Нежна текстурна абстракция в розови и бели тонове, изградена около плавно кръгово движение. Релефните мазки и фини напукани детайли създават усещане за лекота, мекота и светлина, а композицията стои едновременно ефирно и динамично.',
+    price: 340,
+    image_url: '/images/paintings/pink-whirl-1.jpeg',
+    additional_images: [
+      '/images/paintings/pink-whirl-2.jpeg',
+      '/images/paintings/pink-whirl-3.jpeg',
+      '/images/paintings/pink-whirl-4.jpeg',
+    ],
+    dimensions: '40x50 cm',
+    category: 'abstract',
+    status: 'available',
+    featured: true,
+    materials: 'акрил и текстурна паста върху платно',
+  },
+  {
+    id: 'zlaten-svyat-01',
+    title: 'Златен свят',
+    description:
+      'Текстурна композиция върху дълбок черен фон, в която релефно земно кълбо със златни континенти се спуска в свободни метални линии. Контрастът между тъмната основа, сребристите отблясъци и златното фолио създава усещане за движение, мащаб и светлина.',
+    price: 390,
+    image_url: '/images/paintings/golden-world-1.jpeg',
+    additional_images: [
+      '/images/paintings/golden-world-2.jpeg',
+      '/images/paintings/golden-world-3.jpeg',
+      '/images/paintings/golden-world-4.jpeg',
+      '/images/paintings/golden-world-5.jpeg',
+      '/images/paintings/golden-world-6.jpeg',
+      '/images/paintings/golden-world-7.jpeg',
+    ],
+    dimensions: '50x70 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
+  {
     id: 'vulna-01',
     title: 'Вълна',
     description:
@@ -66,6 +105,20 @@ const paintings = [
     status: 'available',
     featured: true,
     materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
+  {
+    id: 'zlaten-siluet-01',
+    title: 'Златен силует',
+    description:
+      'Минималистична портретна композиция върху дълбок черен фон, изградена с фини златни релефни линии и меки абстрактни вълни. Контрастът между матовата основа и металния блясък подчертава силуета и придава на картината елегантно, съвременно присъствие.',
+    price: 360,
+    image_url: '/images/paintings/golden-silhouette-1.jpg',
+    additional_images: ['/images/paintings/golden-silhouette-2.jpg'],
+    dimensions: '40x50 cm',
+    category: 'minimalist',
+    status: 'available',
+    featured: true,
+    materials: 'акрил и златни релефни акценти върху платно',
   },
 ];
 
