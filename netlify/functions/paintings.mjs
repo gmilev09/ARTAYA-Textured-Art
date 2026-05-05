@@ -107,6 +107,37 @@ const paintings = [
     materials: 'акрил, текстурна паста и златно фолио върху платно',
   },
   {
+    id: 'beli-galabi-01',
+    title: 'Бели гълъби',
+    description:
+      'Поетична текстурна композиция в меки бежови и млечно-бели тонове, в която два релефни бели гълъба политат край цъфнало клонче. Пастьозните мазки изграждат пера и цветове с истински обем, а спокойният кръгов фон обгръща сцената в мека светлина — символ на нежност, любов и хармония.',
+    price: 380,
+    image_url: '/images/paintings/white-doves-1.jpeg',
+    additional_images: [
+      '/images/paintings/white-doves-2.jpeg',
+      '/images/paintings/white-doves-3.jpeg',
+    ],
+    dimensions: '50x70 cm',
+    category: 'nature',
+    status: 'available',
+    featured: true,
+    materials: 'акрил и текстурна паста върху платно',
+  },
+  {
+    id: 'zlatno-siyanie-01',
+    title: 'Златно сияние',
+    description:
+      'Лъчиста текстурна абстракция, изградена от плътни релефни линии и топли метални отблясъци. Централната точка разгръща композицията като взрив от светлина, а златната повърхност улавя всеки ъгъл на осветяване и придава на платното силно, елегантно присъствие.',
+    price: 400,
+    image_url: '/images/paintings/golden-radiance-1.jpeg',
+    additional_images: [],
+    dimensions: '50x70 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
+  {
     id: 'zlaten-siluet-01',
     title: 'Златен силует',
     description:
