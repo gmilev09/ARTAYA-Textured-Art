@@ -138,6 +138,23 @@ const paintings = [
     materials: 'акрил, текстурна паста и златно фолио върху платно',
   },
   {
+    id: 'rozovo-zlato-01',
+    title: 'Розово злато',
+    description:
+      'Нежна текстурна абстракция върху квадратно платно, в която топли розови и прасковени тонове се преливат, а потоци от златно фолио се спускат като сияещи струи светлина. Релефните мазки и фини напукани повърхности улавят отблясъци по различен начин при всяко осветяване, превръщайки картината в спокойно, романтично присъствие, което носи усещане за мекота и лукс.',
+    price: 340,
+    image_url: '/images/paintings/pink-gold-1.jpeg',
+    additional_images: [
+      '/images/paintings/pink-gold-2.jpeg',
+      '/images/paintings/pink-gold-3.jpeg',
+    ],
+    dimensions: '40x40 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
+  {
     id: 'zlaten-siluet-01',
     title: 'Златен силует',
     description:
