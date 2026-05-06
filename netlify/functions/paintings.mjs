@@ -188,7 +188,10 @@ export default async (req) => {
     return json(painting);
   }
 
-  let result = paintings;
+  const statusOrder = { available: 0, reserved: 1, sold: 2 };
+  let result = [...paintings].sort(
+    (a, b) => (statusOrder[a.status] ?? 0) - (statusOrder[b.status] ?? 0),
+  );
   if (url.searchParams.get('featured') === 'true') {
     result = result.filter((p) => p.featured);
   }
