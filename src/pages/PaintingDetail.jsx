@@ -196,7 +196,7 @@ export default function PaintingDetail() {
           </h1>
 
           <p className="text-3xl font-heading font-semibold text-primary mb-6">
-            {painting.price?.toFixed(0)} лв.
+            {(painting.price / 1.95583).toFixed(2)} €
           </p>
 
           {painting.description && (

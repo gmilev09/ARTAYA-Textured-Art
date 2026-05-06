@@ -18,6 +18,7 @@ export default function CustomOrderPage() {
     phone: '',
     preferred_colors: '',
     preferred_size: '',
+    custom_size: '',
     style_description: '',
     budget: '',
     notes: '',
@@ -45,6 +46,7 @@ export default function CustomOrderPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
+          preferred_size: form.preferred_size === 'custom' ? form.custom_size : form.preferred_size,
           reference_images: referenceFiles,
         })
       });
@@ -159,6 +161,16 @@ export default function CustomOrderPage() {
                   <SelectItem value="custom">Друг размер</SelectItem>
                 </SelectContent>
               </Select>
+              {form.preferred_size === 'custom' && (
+                <Input
+                  autoFocus
+                  required
+                  value={form.custom_size}
+                  onChange={e => handleChange('custom_size', e.target.value)}
+                  placeholder="напр. 90×120 см"
+                  className="font-body mt-2"
+                />
+              )}
             </div>
           </div>
 
@@ -191,10 +203,10 @@ export default function CustomOrderPage() {
                 <SelectValue placeholder="Изберете бюджет" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="100-200">100 – 200 лв.</SelectItem>
-                <SelectItem value="200-400">200 – 400 лв.</SelectItem>
-                <SelectItem value="400-600">400 – 600 лв.</SelectItem>
-                <SelectItem value="600+">600+ лв.</SelectItem>
+                <SelectItem value="50-100">50 – 100 €</SelectItem>
+                <SelectItem value="100-200">100 – 200 €</SelectItem>
+                <SelectItem value="200-300">200 – 300 €</SelectItem>
+                <SelectItem value="300+">300+ €</SelectItem>
               </SelectContent>
             </Select>
           </div>
