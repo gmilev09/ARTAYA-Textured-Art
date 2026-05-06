@@ -6,9 +6,16 @@ import { Badge } from '@/components/ui/badge';
 
 export default function PaintingCard({ painting, index = 0 }) {
   const statusLabel = {
+    available: 'Налична',
     sold: 'Продадена',
     reserved: 'Резервирана',
   };
+  const statusBadgeClass = {
+    available: 'bg-emerald-100 text-emerald-800 border border-emerald-200',
+    reserved: 'bg-amber-100 text-amber-800 border border-amber-200',
+    sold: 'bg-rose-100 text-rose-800 border border-rose-200',
+  };
+  const status = painting.status || 'available';
 
   const images = useMemo(() => {
     const list = [painting.image_url, ...(painting.additional_images || [])].filter(Boolean);
@@ -75,6 +82,10 @@ export default function PaintingCard({ painting, index = 0 }) {
               </div>
             </>
           )}
+
+          <div className={`absolute top-3 left-3 rounded-full px-2.5 py-1 text-xs font-body font-medium shadow-sm backdrop-blur-sm ${statusBadgeClass[status] || statusBadgeClass.available}`}>
+            {statusLabel[status]}
+          </div>
 
           {painting.status && painting.status !== 'available' && (
             <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
