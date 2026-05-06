@@ -136,7 +136,7 @@ export default function Cart() {
                 <p className="text-sm text-muted-foreground font-body">{item.dimensions}</p>
               </div>
               <p className="text-lg font-heading font-semibold text-primary whitespace-nowrap">
-                {(item.price / 1.95583).toFixed(2)} €
+                {item.price} €
               </p>
               <Button
                 variant="ghost"
@@ -153,7 +153,7 @@ export default function Cart() {
 
       <div className="flex items-center justify-between border-t border-border pt-6 mb-8">
         <span className="text-lg font-body text-muted-foreground">Общо:</span>
-        <span className="text-2xl font-heading font-semibold text-foreground">{(total / 1.95583).toFixed(2)} €</span>
+        <span className="text-2xl font-heading font-semibold text-foreground">{total} €</span>
       </div>
 
       {!showCheckout ? (

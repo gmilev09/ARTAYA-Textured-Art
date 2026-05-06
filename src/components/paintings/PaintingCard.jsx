@@ -104,7 +104,7 @@ export default function PaintingCard({ painting, index = 0 }) {
             {painting.dimensions} {painting.materials && `· ${painting.materials}`}
           </p>
           <p className="text-lg font-heading font-semibold text-primary">
-            {(painting.price / 1.95583).toFixed(2)} €
+            {painting.price} €
           </p>
         </div>
       </Link>
