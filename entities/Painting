@@ -12,7 +12,7 @@
     },
     "price": {
       "type": "number",
-      "description": "Price in BGN"
+      "description": "Price in EUR"
     },
     "image_url": {
       "type": "string",
