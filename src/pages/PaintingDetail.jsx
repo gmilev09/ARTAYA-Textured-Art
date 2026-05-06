@@ -184,9 +184,19 @@ export default function PaintingDetail() {
                 {categoryLabels[painting.category] || painting.category}
               </Badge>
             )}
-            {painting.status !== 'available' && (
+            {painting.status === 'available' && (
+              <Badge className="font-body text-xs bg-emerald-100 text-emerald-800 border border-emerald-200 hover:bg-emerald-100">
+                Налична
+              </Badge>
+            )}
+            {painting.status === 'reserved' && (
+              <Badge className="font-body text-xs bg-amber-100 text-amber-800 border border-amber-200 hover:bg-amber-100">
+                Резервирана
+              </Badge>
+            )}
+            {painting.status === 'sold' && (
               <Badge variant="destructive" className="font-body text-xs">
-                {painting.status === 'sold' ? 'Продадена' : 'Резервирана'}
+                Продадена
               </Badge>
             )}
           </div>
