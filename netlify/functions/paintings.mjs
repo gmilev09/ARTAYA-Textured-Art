@@ -219,6 +219,20 @@ const paintings = [
     featured: true,
     materials: 'акрил, текстурна паста и златни акценти върху платно',
   },
+  {
+    id: 'zlatna-gradina-01',
+    title: 'Златна градина',
+    description:
+      'Елегантна релефна композиция върху снежнобяло платно, където деликатни златни цветя и клонки се спускат грациозно надолу. Използвана е текстурна паста и златно фолио за създаване на фин релеф, който улавя светлината и придава на картината нежно и луксозно излъчване.',
+    price: 350,
+    image_url: '/images/paintings/golden-garden-1.jpg',
+    additional_images: [],
+    dimensions: '40x50 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златно фолио върху платно',
+  },
 ];
 
 const json = (body, init = {}) =>

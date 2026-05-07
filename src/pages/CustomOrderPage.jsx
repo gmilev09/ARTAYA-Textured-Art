@@ -41,14 +41,16 @@ export default function CustomOrderPage() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/custom-orders', {
+      const formData = new FormData(e.target);
+      // Ensure custom_size is used if preferred_size is custom
+      if (form.preferred_size === 'custom') {
+        formData.set('preferred_size', form.custom_size);
+      }
+      
+      const response = await fetch('/__forms.html', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          preferred_size: form.preferred_size === 'custom' ? form.custom_size : form.preferred_size,
-          reference_images: referenceFiles,
-        })
+        // Do NOT set Content-Type header when using FormData with files
+        body: formData,
       });
 
       if (!response.ok) throw new Error('Failed to submit');
@@ -109,12 +111,21 @@ export default function CustomOrderPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           onSubmit={handleSubmit}
+          name="custom_order"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          encType="multipart/form-data"
           className="space-y-6 bg-card rounded-2xl p-6 sm:p-10 border border-border shadow-sm"
         >
+          <input type="hidden" name="form-name" value="custom_order" />
+          <p style={{ display: 'none' }}>
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="font-body text-sm">Вашето име *</Label>
               <Input
+                name="name"
                 required
                 value={form.name}
                 onChange={e => handleChange('name', e.target.value)}
@@ -125,6 +136,7 @@ export default function CustomOrderPage() {
             <div className="space-y-2">
               <Label className="font-body text-sm">Имейл *</Label>
               <Input
+                name="email"
                 required
                 type="email"
                 value={form.email}
@@ -139,6 +151,7 @@ export default function CustomOrderPage() {
             <div className="space-y-2">
               <Label className="font-body text-sm">Телефон</Label>
               <Input
+                name="phone"
                 value={form.phone}
                 onChange={e => handleChange('phone', e.target.value)}
                 placeholder="+359..."
@@ -161,6 +174,7 @@ export default function CustomOrderPage() {
                   <SelectItem value="custom">Друг размер</SelectItem>
                 </SelectContent>
               </Select>
+              <input type="hidden" name="preferred_size" value={form.preferred_size === 'custom' ? form.custom_size : form.preferred_size} />
               {form.preferred_size === 'custom' && (
                 <Input
                   autoFocus
@@ -177,6 +191,7 @@ export default function CustomOrderPage() {
           <div className="space-y-2">
             <Label className="font-body text-sm">Предпочитани цветове *</Label>
             <Input
+              name="preferred_colors"
               required
               value={form.preferred_colors}
               onChange={e => handleChange('preferred_colors', e.target.value)}
@@ -188,6 +203,7 @@ export default function CustomOrderPage() {
           <div className="space-y-2">
             <Label className="font-body text-sm">Описание на желания стил *</Label>
             <Textarea
+              name="style_description"
               required
               value={form.style_description}
               onChange={e => handleChange('style_description', e.target.value)}
@@ -209,14 +225,15 @@ export default function CustomOrderPage() {
                 <SelectItem value="300+">300+ €</SelectItem>
               </SelectContent>
             </Select>
+            <input type="hidden" name="budget" value={form.budget} />
           </div>
 
           <div className="space-y-2">
-            <Label className="font-body text-sm">Референтни снимки</Label>
+            <Label className="font-body text-sm">Референтна снимка</Label>
             <div className="border-2 border-dashed border-border rounded-xl p-6 text-center">
               <input
                 type="file"
-                multiple
+                name="reference_image"
                 accept="image/*"
                 onChange={handleFileUpload}
                 className="hidden"
@@ -224,7 +241,7 @@ export default function CustomOrderPage() {
               />
               <label htmlFor="ref-images" className="cursor-pointer flex flex-col items-center gap-2">
                 <Upload className="w-8 h-8 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground font-body">Качете снимки за вдъхновение</span>
+                <span className="text-sm text-muted-foreground font-body">Качете снимка за вдъхновение</span>
               </label>
             </div>
             {referenceFiles.length > 0 && (

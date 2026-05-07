@@ -64,10 +64,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-background/10 mt-12 pt-8 text-center">
+        <div className="border-t border-background/10 mt-12 pt-8 text-center flex flex-col items-center justify-center gap-2">
           <p className="text-xs text-background/40 font-body">
             © {new Date().getFullYear()} ARTAYA Textured Art. Всички права запазени.
           </p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" onClick={() => window.scrollTo(0,0)} className="text-xs text-background/40 hover:text-background/60 transition-colors font-body">
+              Политика за поверителност
+            </Link>
+            <span className="text-background/20 text-xs">|</span>
+            <Link to="/terms-and-conditions" onClick={() => window.scrollTo(0,0)} className="text-xs text-background/40 hover:text-background/60 transition-colors font-body">
+              Общи условия
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,0 +1,32 @@
+<html>
+  <body>
+    <!-- Custom Order Form -->
+    <form name="custom_order" data-netlify="true" netlify-honeypot="bot-field" hidden enctype="multipart/form-data">
+      <input type="hidden" name="form-name" value="custom_order" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="preferred_size" />
+      <input name="preferred_colors" />
+      <textarea name="style_description"></textarea>
+      <input name="budget" />
+      <input type="file" name="reference_image" />
+    </form>
+
+    <!-- Cart Order Form -->
+    <form name="order" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="order" />
+      <input name="bot-field" />
+      <input name="customer_name" />
+      <input name="customer_email" />
+      <input name="customer_phone" />
+      <input name="customer_address" />
+      <input name="customer_city" />
+      <input name="shipping_provider" />
+      <textarea name="notes"></textarea>
+      <input type="hidden" name="cart_items" />
+      <input type="hidden" name="total_price" />
+    </form>
+  </body>
+</html>
