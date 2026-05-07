@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast';
 import { Trash2, ShoppingBag, ArrowLeft, CheckCircle } from 'lucide-react';
 import { useCart } from '../lib/CartContext';
@@ -21,6 +22,7 @@ export default function Cart() {
     customer_phone: '',
     customer_address: '',
     customer_city: '',
+    shipping_provider: '',
     notes: '',
   });
 
@@ -35,20 +37,12 @@ export default function Cart() {
     setIsSubmitting(true);
     
     try {
-      // Замени с твоя API ендпоинт за поръчки
-      const response = await fetch('/api/orders', {
+      const formData = new FormData(e.target);
+      
+      const response = await fetch('/__forms.html', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...form,
-          items: cart.map(p => ({
-            painting_id: p.id,
-            title: p.title,
-            price: p.price,
-            image_url: p.image_url,
-          })),
-          total,
-        })
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
       });
 
       if (!response.ok) throw new Error('Failed to place order');
@@ -169,36 +163,61 @@ export default function Cart() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           onSubmit={handleOrder}
+          name="order"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
           className="space-y-4 bg-card rounded-2xl p-6 sm:p-8 border border-border"
         >
+          <input type="hidden" name="form-name" value="order" />
+          <p style={{ display: 'none' }}>
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+          <input type="hidden" name="cart_items" value={JSON.stringify(cart.map(p => ({ painting_id: p.id, title: p.title, price: p.price })))} />
+          <input type="hidden" name="total_price" value={total} />
           <h3 className="text-xl font-heading font-semibold mb-4">Данни за доставка</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="font-body text-sm">Име *</Label>
-              <Input required value={form.customer_name} onChange={e => handleChange('customer_name', e.target.value)} className="font-body" />
+              <Input name="customer_name" required value={form.customer_name} onChange={e => handleChange('customer_name', e.target.value)} className="font-body" />
             </div>
             <div className="space-y-2">
               <Label className="font-body text-sm">Имейл *</Label>
-              <Input required type="email" value={form.customer_email} onChange={e => handleChange('customer_email', e.target.value)} className="font-body" />
+              <Input name="customer_email" required type="email" value={form.customer_email} onChange={e => handleChange('customer_email', e.target.value)} className="font-body" />
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="font-body text-sm">Телефон *</Label>
-              <Input required value={form.customer_phone} onChange={e => handleChange('customer_phone', e.target.value)} className="font-body" />
+              <Input name="customer_phone" required value={form.customer_phone} onChange={e => handleChange('customer_phone', e.target.value)} className="font-body" />
             </div>
             <div className="space-y-2">
               <Label className="font-body text-sm">Град *</Label>
-              <Input required value={form.customer_city} onChange={e => handleChange('customer_city', e.target.value)} className="font-body" />
+              <Input name="customer_city" required value={form.customer_city} onChange={e => handleChange('customer_city', e.target.value)} className="font-body" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label className="font-body text-sm">Доставчик *</Label>
+              <Select required value={form.shipping_provider} onValueChange={value => handleChange('shipping_provider', value)} name="shipping_provider">
+                <SelectTrigger className="font-body bg-background">
+                  <SelectValue placeholder="Изберете доставчик" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Еконт" className="font-body">Еконт</SelectItem>
+                  <SelectItem value="Спиди" className="font-body">Спиди</SelectItem>
+                </SelectContent>
+              </Select>
+              {/* Add hidden input since Select doesn't render native input by default in radix */}
+              <input type="hidden" name="shipping_provider" value={form.shipping_provider} />
+            </div>
+            <div className="space-y-2">
+              <Label className="font-body text-sm">Адрес за доставка *</Label>
+              <Input name="customer_address" required value={form.customer_address} onChange={e => handleChange('customer_address', e.target.value)} className="font-body" />
             </div>
           </div>
           <div className="space-y-2">
-            <Label className="font-body text-sm">Адрес за доставка *</Label>
-            <Input required value={form.customer_address} onChange={e => handleChange('customer_address', e.target.value)} className="font-body" />
-          </div>
-          <div className="space-y-2">
             <Label className="font-body text-sm">Бележки</Label>
-            <Textarea value={form.notes} onChange={e => handleChange('notes', e.target.value)} className="font-body" />
+            <Textarea name="notes" value={form.notes} onChange={e => handleChange('notes', e.target.value)} className="font-body" />
           </div>
           <Button type="submit" size="lg" className="w-full rounded-full font-body text-sm tracking-wide" disabled={isSubmitting}>
             {isSubmitting ? (

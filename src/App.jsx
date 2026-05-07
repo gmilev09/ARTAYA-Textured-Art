@@ -12,6 +12,11 @@ import PaintingDetail from './pages/PaintingDetail';
 import CustomOrderPage from './pages/CustomOrderPage';
 import Cart from './pages/Cart';
 import About from './pages/About';
+import CookieConsent from './components/common/CookieConsent';
+
+import PrivacyPolicy from './pages/PrivacyPolicy';
+
+import TermsAndConditions from './pages/TermsAndConditions';
 
 const MainApp = () => {
   const { isLoadingAuth, authError, navigateToLogin } = useAuth();
@@ -38,6 +43,8 @@ const MainApp = () => {
         <Route path="/custom-order" element={<CustomOrderPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
@@ -53,6 +60,7 @@ function App() {
           <MainApp />
         </Router>
         <Toaster />
+        <CookieConsent />
       </QueryClientProvider>
     </AuthProvider>
   )
