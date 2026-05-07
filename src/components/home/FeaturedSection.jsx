@@ -8,7 +8,7 @@ import PaintingCard from '../paintings/PaintingCard';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const fetchFeaturedPaintings = async () => {
-  const response = await fetch('/api/paintings?featured=true&limit=5');
+  const response = await fetch('/api/paintings?featured=true&limit=6');
   if (!response.ok) throw new Error('Network response was not ok');
   return response.json();
 };
