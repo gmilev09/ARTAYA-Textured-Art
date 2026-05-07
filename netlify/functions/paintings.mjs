@@ -1,5 +1,24 @@
 const paintings = [
   {
+    id: 'zlatni-pera-01',
+    title: 'Златни пера',
+    description:
+      'Елегантна релефна композиция с пера в бяло, наситено зелено и златно, разположени върху мек мраморен фон. Обемната текстура и металните акценти улавят светлината и придават на картината спокойно, природно и луксозно присъствие.',
+    price: 360,
+    image_url: '/images/paintings/golden-feathers-1.jpg',
+    additional_images: [
+      '/images/paintings/golden-feathers-2.jpg',
+      '/images/paintings/golden-feathers-3.jpg',
+      '/images/paintings/golden-feathers-4.jpg',
+      '/images/paintings/golden-feathers-5.jpg',
+    ],
+    dimensions: '40x50 cm',
+    category: 'nature',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златни акценти върху платно',
+  },
+  {
     id: 'rozov-vihar-01',
     title: 'Розов вихър',
     description:
@@ -167,6 +186,38 @@ const paintings = [
     status: 'available',
     featured: true,
     materials: 'акрил и златни релефни акценти върху платно',
+  },
+  {
+    id: 'srebaren-cvqt-01',
+    title: 'Сребърен цвят',
+    description:
+      'Драматична текстурна абстракция върху дълбок черен фон, в която плътни бели, бежови и графитени мазки се разгръщат като цъфтяща форма. Сребърните метални акценти подчертават релефа и добавят светлина, движение и съвременно присъствие.',
+    price: 360,
+    image_url: '/images/paintings/silver-bloom-1.jpg',
+    additional_images: [
+      '/images/paintings/silver-bloom-2.jpg',
+      '/images/paintings/silver-bloom-3.jpg',
+      '/images/paintings/silver-bloom-4.jpg',
+    ],
+    dimensions: '40x40 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и сребърни акценти върху платно',
+  },
+  {
+    id: 'zlatna-luna-01',
+    title: 'Златна луна',
+    description:
+      'Елегантна текстурна композиция върху дълбок черен фон, в която златна луна обгръща релефно дърво и ято птици над мек бял облак. Металните акценти и издължените златни линии придават на картината мистично, но спокойно присъствие с усещане за нощна светлина и движение.',
+    price: 380,
+    image_url: '/images/paintings/golden-moon-1.jpg',
+    additional_images: ['/images/paintings/golden-moon-2.jpg'],
+    dimensions: '40x50 cm',
+    category: 'mixed_media',
+    status: 'available',
+    featured: true,
+    materials: 'акрил, текстурна паста и златни акценти върху платно',
   },
 ];
 
