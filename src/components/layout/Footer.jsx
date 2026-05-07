@@ -43,6 +43,9 @@ export default function Footer() {
               <Link to="/about" onClick={() => window.scrollTo(0,0)} className="block text-sm text-background/60 hover:text-background transition-colors">
                 За нас
               </Link>
+              <Link to="/shipping" onClick={() => window.scrollTo(0,0)} className="block text-sm text-background/60 hover:text-background transition-colors">
+                Доставка и плащане
+              </Link>
             </div>
           </div>
 
@@ -68,13 +71,17 @@ export default function Footer() {
           <p className="text-xs text-background/40 font-body">
             © {new Date().getFullYear()} ARTAYA Textured Art. Всички права запазени.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link to="/privacy-policy" onClick={() => window.scrollTo(0,0)} className="text-xs text-background/40 hover:text-background/60 transition-colors font-body">
               Политика за поверителност
             </Link>
-            <span className="text-background/20 text-xs">|</span>
+            <span className="text-background/20 text-xs hidden sm:inline">|</span>
             <Link to="/terms-and-conditions" onClick={() => window.scrollTo(0,0)} className="text-xs text-background/40 hover:text-background/60 transition-colors font-body">
               Общи условия
+            </Link>
+            <span className="text-background/20 text-xs hidden sm:inline">|</span>
+            <Link to="/cookies-policy" onClick={() => window.scrollTo(0,0)} className="text-xs text-background/40 hover:text-background/60 transition-colors font-body">
+              Политика за бисквитки
             </Link>
           </div>
         </div>

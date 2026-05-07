@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 export default function CookieConsent() {
@@ -31,6 +32,7 @@ export default function CookieConsent() {
           <p className="font-semibold text-foreground text-base mb-1">Ние използваме бисквитки</p>
           <p>
             Този сайт използва бисквитки, за да ви осигури най-доброто потребителско изживяване. 
+            Научете повече в нашата <Link to="/cookies-policy" onClick={() => window.scrollTo(0,0)} className="underline hover:text-foreground">Политика за бисквитки</Link>.
             Като изберете &quot;Приемам&quot;, вие се съгласявате с използването им.
           </p>
         </div>

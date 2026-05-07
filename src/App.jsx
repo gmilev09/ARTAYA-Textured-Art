@@ -15,8 +15,9 @@ import About from './pages/About';
 import CookieConsent from './components/common/CookieConsent';
 
 import PrivacyPolicy from './pages/PrivacyPolicy';
-
+import CookiesPolicy from './pages/CookiesPolicy';
 import TermsAndConditions from './pages/TermsAndConditions';
+import ShippingInfo from './pages/ShippingInfo';
 
 const MainApp = () => {
   const { isLoadingAuth, authError, navigateToLogin } = useAuth();
@@ -43,7 +44,9 @@ const MainApp = () => {
         <Route path="/custom-order" element={<CustomOrderPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/about" element={<About />} />
+        <Route path="/shipping" element={<ShippingInfo />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/cookies-policy" element={<CookiesPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
@@ -58,9 +61,9 @@ function App() {
         <Router>
           <ScrollToTop />
           <MainApp />
+          <CookieConsent />
         </Router>
         <Toaster />
-        <CookieConsent />
       </QueryClientProvider>
     </AuthProvider>
   )
