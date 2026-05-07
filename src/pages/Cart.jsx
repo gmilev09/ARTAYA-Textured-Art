@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
 import { Trash2, ShoppingBag, ArrowLeft, CheckCircle } from 'lucide-react';
 import { useCart } from '../lib/CartContext';
@@ -16,6 +17,8 @@ export default function Cart() {
   const [showCheckout, setShowCheckout] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [form, setForm] = useState({
     customer_name: '',
     customer_email: '',
@@ -174,6 +177,8 @@ export default function Cart() {
           </p>
           <input type="hidden" name="cart_items" value={JSON.stringify(cart.map(p => ({ painting_id: p.id, title: p.title, price: p.price })))} />
           <input type="hidden" name="total_price" value={total} />
+          <input type="hidden" name="agreed_to_privacy" value={agreedToPrivacy ? "yes" : "no"} />
+          <input type="hidden" name="agreed_to_terms" value={agreedToTerms ? "yes" : "no"} />
           <h3 className="text-xl font-heading font-semibold mb-4">Данни за доставка</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -219,7 +224,39 @@ export default function Cart() {
             <Label className="font-body text-sm">Бележки</Label>
             <Textarea name="notes" value={form.notes} onChange={e => handleChange('notes', e.target.value)} className="font-body" />
           </div>
-          <Button type="submit" size="lg" className="w-full rounded-full font-body text-sm tracking-wide" disabled={isSubmitting}>
+
+          <div className="space-y-4 pt-4 border-t border-border">
+            <div className="flex items-center space-x-2">
+              <Checkbox 
+                id="privacy" 
+                checked={agreedToPrivacy} 
+                onCheckedChange={setAgreedToPrivacy}
+                required
+              />
+              <label
+                htmlFor="privacy"
+                className="text-sm font-body leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Съгласявам се с <Link to="/privacy-policy" className="underline hover:text-primary" target="_blank">Политиката за поверителност</Link> *
+              </label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox 
+                id="terms" 
+                checked={agreedToTerms} 
+                onCheckedChange={setAgreedToTerms}
+                required
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm font-body leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Съгласявам се с <Link to="/terms-and-conditions" className="underline hover:text-primary" target="_blank">Общите условия</Link> *
+              </label>
+            </div>
+          </div>
+
+          <Button type="submit" size="lg" className="w-full rounded-full font-body text-sm tracking-wide" disabled={isSubmitting || !agreedToPrivacy || !agreedToTerms}>
             {isSubmitting ? (
               <div className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
             ) : (

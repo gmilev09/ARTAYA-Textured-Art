@@ -5,13 +5,17 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
+import { Link } from 'react-router-dom';
 import { CheckCircle, Upload } from 'lucide-react';
 
 export default function CustomOrderPage() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -121,6 +125,8 @@ export default function CustomOrderPage() {
           <p style={{ display: 'none' }}>
             <label>Don't fill this out: <input name="bot-field" /></label>
           </p>
+          <input type="hidden" name="agreed_to_privacy" value={agreedToPrivacy ? "yes" : "no"} />
+          <input type="hidden" name="agreed_to_terms" value={agreedToTerms ? "yes" : "no"} />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="font-body text-sm">Вашето име *</Label>
@@ -249,7 +255,38 @@ export default function CustomOrderPage() {
             )}
           </div>
 
-          <Button type="submit" size="lg" className="w-full rounded-full font-body text-sm tracking-wide" disabled={isSubmitting}>
+          <div className="space-y-4 pt-4 border-t border-border">
+            <div className="flex items-center space-x-2">
+              <Checkbox 
+                id="privacy" 
+                checked={agreedToPrivacy} 
+                onCheckedChange={setAgreedToPrivacy}
+                required
+              />
+              <label
+                htmlFor="privacy"
+                className="text-sm font-body leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Съгласявам се с <Link to="/privacy-policy" className="underline hover:text-primary" target="_blank">Политиката за поверителност</Link> *
+              </label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox 
+                id="terms" 
+                checked={agreedToTerms} 
+                onCheckedChange={setAgreedToTerms}
+                required
+              />
+              <label
+                htmlFor="terms"
+                className="text-sm font-body leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Съгласявам се с <Link to="/terms-and-conditions" className="underline hover:text-primary" target="_blank">Общите условия</Link> *
+              </label>
+            </div>
+          </div>
+
+          <Button type="submit" size="lg" className="w-full rounded-full font-body text-sm tracking-wide" disabled={isSubmitting || !agreedToPrivacy || !agreedToTerms}>
             {isSubmitting ? 'Изпращане...' : 'Изпрати заявка'}
           </Button>
         </motion.form>
