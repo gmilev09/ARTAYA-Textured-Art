@@ -5,6 +5,7 @@ import PaintingCard from '../components/paintings/PaintingCard';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
+import BackgroundForms from '../components/common/BackgroundForms';
 
 const categories = [
   { value: 'all', label: 'Всички' },
@@ -35,7 +36,8 @@ export default function Gallery() {
     : paintings.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden">
+      <BackgroundForms variant="scattered" />
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
