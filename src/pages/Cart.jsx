@@ -203,7 +203,7 @@ export default function Cart() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label className="font-body text-sm">Доставчик *</Label>
-              <Select required value={form.shipping_provider} onValueChange={value => handleChange('shipping_provider', value)} name="shipping_provider">
+              <Select required value={form.shipping_provider} onValueChange={value => handleChange('shipping_provider', value)}>
                 <SelectTrigger className="font-body bg-background">
                   <SelectValue placeholder="Изберете доставчик" />
                 </SelectTrigger>
