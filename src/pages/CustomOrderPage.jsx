@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Upload } from 'lucide-react';
+import BackgroundForms from '../components/common/BackgroundForms';
 
 export default function CustomOrderPage() {
   const { toast } = useToast();
@@ -91,7 +92,8 @@ export default function CustomOrderPage() {
   }
 
   return (
-    <div className="min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <BackgroundForms variant="minimal" />
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

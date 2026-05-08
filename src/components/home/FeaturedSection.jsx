@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PaintingCard from '../paintings/PaintingCard';
 import { Skeleton } from '@/components/ui/skeleton';
+import BackgroundForms from '../common/BackgroundForms';
 
 const fetchFeaturedPaintings = async () => {
   const response = await fetch('/api/paintings?featured=true&limit=6');
@@ -20,7 +21,8 @@ export default function FeaturedSection() {
   });
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="relative overflow-hidden py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <BackgroundForms variant="circles" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
